@@ -1,0 +1,92 @@
+═══════════════════════════════════════════════════════════════════
+         🎬 EXTRACTOR DE FRAMES DE VIDEO 🎬
+═══════════════════════════════════════════════════════════════════
+
+📁 GUÍA RÁPIDA DE ARCHIVOS - ¿Qué archivo debo usar?
+═══════════════════════════════════════════════════════════════════
+
+
+🌟 PARA USUARIOS NO TÉCNICOS (Principiantes):
+───────────────────────────────────────────────────────────────────
+
+   1️⃣  PRIMERO LEE ESTO:
+       📖 INSTRUCCIONES.html  ← Abre este archivo en tu navegador
+          (Contiene una guía visual paso a paso)
+
+   2️⃣  LUEGO HAZ DOBLE CLICK AQUÍ:
+       ⭐ HACER DOBLE CLICK AQUI.bat  ← Inicia la aplicación
+          (Instala todo automáticamente y abre el programa)
+
+   3️⃣  ALTERNATIVA:
+       INICIAR_APP.bat  ← Inicia directamente
+          (Si ya conoces el programa)
+
+
+📚 ARCHIVOS DE AYUDA ADICIONALES:
+───────────────────────────────────────────────────────────────────
+
+   📄 LEEME.txt
+      → Resumen ultra rápido en texto
+
+   📄 INSTRUCCIONES_FACILES.txt
+      → Guía detallada en texto plano
+
+   📄 README_WEB.md
+      → Documentación técnica completa
+
+
+💻 PARA USUARIOS TÉCNICOS:
+───────────────────────────────────────────────────────────────────
+
+   1. Instalar dependencias:
+      pip install -r requirements.txt
+
+   2. Iniciar servidor web:
+      python app.py
+
+   3. Abrir navegador en:
+      http://localhost:5000
+
+
+🔧 ARCHIVOS DEL SISTEMA (No modificar):
+───────────────────────────────────────────────────────────────────
+
+   app.py                 → Servidor web Flask
+   extract_frames.py      → Script original (línea de comandos)
+   requirements.txt       → Lista de dependencias
+   templates/             → Carpeta con archivos HTML
+
+
+📦 ¿QUÉ HACE ESTE PROGRAMA?
+───────────────────────────────────────────────────────────────────
+
+   Convierte videos en imágenes PNG individuales (frames).
+   
+   Ejemplo:
+   - Tu video: "mi_video.mp4"
+   - Resultado: Carpeta "mi_video_frames/" con:
+     • frame_0000.png
+     • frame_0001.png
+     • frame_0002.png
+     • ... etc.
+
+
+✅ REQUISITOS:
+───────────────────────────────────────────────────────────────────
+
+   • Python 3.7 o superior
+   • Conexión a internet (solo para la primera instalación)
+   • Espacio en disco para los frames
+
+
+❓ ¿PROBLEMAS?
+───────────────────────────────────────────────────────────────────
+
+   1. Abre: 📖 INSTRUCCIONES.html
+   2. Ve a la sección "Solución de problemas"
+   3. Sigue los pasos indicados
+
+
+═══════════════════════════════════════════════════════════════════
+              ¡Comienza abriendo 📖 INSTRUCCIONES.html!
+═══════════════════════════════════════════════════════════════════

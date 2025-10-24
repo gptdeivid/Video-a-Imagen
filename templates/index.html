@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extractor de Frames de Video</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .video-list {
+            margin-bottom: 20px;
+        }
+
+        .video-item {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .video-item:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .video-item.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .video-icon {
+            font-size: 24px;
+        }
+
+        .video-name {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .no-videos {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .refresh-btn {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .info-box p {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .info-box ol {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .help-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .help-box summary {
+            color: #856404;
+        }
+
+        .help-box a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .help-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Extractor de Frames</h1>
+        <p class="subtitle">Selecciona un video y extrae sus frames en formato PNG</p>
+
+        <div class="info-box">
+            <p><strong>💡 Instrucciones:</strong></p>
+            <ol style="text-align: left; margin-left: 20px; font-size: 13px;">
+                <li>Coloca tus videos en la misma carpeta que esta aplicación</li>
+                <li>Haz click en el botón "🔄 Actualizar lista" si no aparecen</li>
+                <li>Selecciona un video de la lista haciendo click sobre él</li>
+                <li>Presiona "Extraer Frames" y espera</li>
+            </ol>
+        </div>
+
+        <div class="help-box">
+            <details>
+                <summary style="cursor: pointer; font-weight: bold;">❓ ¿Primera vez usando la aplicación? Click aquí</summary>
+                <div style="margin-top: 10px; line-height: 1.6;">
+                    <p><strong>Si la página no carga o ves errores:</strong></p>
+                    <ol style="margin-left: 20px; font-size: 13px;">
+                        <li>Cierra esta ventana del navegador</li>
+                        <li>Busca el archivo <strong>"⭐ HACER DOBLE CLICK AQUI.bat"</strong></li>
+                        <li>Haz doble click en él</li>
+                        <li>Espera a que se instalen las dependencias automáticamente</li>
+                    </ol>
+                    <p style="margin-top: 10px; font-size: 12px; color: #666;">
+                        <strong>Nota:</strong> Necesitas tener Python instalado. Si no lo tienes, descárgalo desde 
+                        <a href="https://www.python.org/downloads/" target="_blank">python.org/downloads</a>
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <button class="refresh-btn" onclick="loadVideos()">🔄 Actualizar lista de videos</button>
+
+        <div id="videoList" class="video-list">
+            <div class="no-videos">Cargando videos...</div>
+        </div>
+
+        <button id="extractBtn" class="btn" onclick="extractFrames()" disabled>
+            Extraer Frames
+        </button>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 10px;">Procesando video...</p>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        let selectedVideo = null;
+
+        // Cargar videos al iniciar
+        window.onload = function() {
+            loadVideos();
+        };
+
+        async function loadVideos() {
+            try {
+                const response = await fetch('/api/videos');
+                const data = await response.json();
+                
+                const videoList = document.getElementById('videoList');
+                
+                if (data.videos.length === 0) {
+                    videoList.innerHTML = '<div class="no-videos">No se encontraron videos en la carpeta.<br>Coloca archivos .mp4, .mov, .avi, etc. en la misma carpeta que la aplicación.</div>';
+                    return;
+                }
+
+                videoList.innerHTML = '';
+                data.videos.forEach(video => {
+                    const videoItem = document.createElement('div');
+                    videoItem.className = 'video-item';
+                    videoItem.innerHTML = `
+                        <span class="video-icon">🎥</span>
+                        <span class="video-name">${video}</span>
+                    `;
+                    videoItem.onclick = () => selectVideo(video, videoItem);
+                    videoList.appendChild(videoItem);
+                });
+            } catch (error) {
+                showMessage('Error al cargar los videos: ' + error.message, 'error');
+            }
+        }
+
+        function selectVideo(video, element) {
+            // Deseleccionar todos los videos
+            document.querySelectorAll('.video-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+
+            // Seleccionar el video actual
+            element.classList.add('selected');
+            selectedVideo = video;
+            document.getElementById('extractBtn').disabled = false;
+            hideMessage();
+        }
+
+        async function extractFrames() {
+            if (!selectedVideo) {
+                showMessage('Por favor selecciona un video', 'error');
+                return;
+            }
+
+            const extractBtn = document.getElementById('extractBtn');
+            const loading = document.getElementById('loading');
+
+            try {
+                extractBtn.disabled = true;
+                loading.style.display = 'block';
+                hideMessage();
+
+                const response = await fetch('/api/extract', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ video: selectedVideo })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(`✅ ${data.message}<br>Los frames se guardaron en: <strong>${data.output_folder}</strong>`, 'success');
+                } else {
+                    showMessage('❌ ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('❌ Error al procesar: ' + error.message, 'error');
+            } finally {
+                extractBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.innerHTML = text;
+            message.className = 'message ' + type;
+            message.style.display = 'block';
+        }
+
+        function hideMessage() {
+            const message = document.getElementById('message');
+            message.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

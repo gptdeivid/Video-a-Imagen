@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones - Extractor de Frames</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .step-content {
+            color: #555;
+            line-height: 1.6;
+            margin-left: 40px;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .file-box {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Extractor de Frames de Video</h1>
+        <p class="subtitle">Guía completa para principiantes</p>
+
+        <div class="success">
+            <h3>✅ Para usuarios NO técnicos</h3>
+            <p>Esta guía está diseñada para que cualquier persona pueda usar la aplicación, sin necesidad de conocimientos técnicos.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">1</span>
+                Verifica que tienes Python instalado
+            </div>
+            <div class="step-content">
+                <p>Python es necesario para que la aplicación funcione.</p>
+                <p><strong>¿Cómo saber si lo tienes?</strong></p>
+                <ol>
+                    <li>Abre el símbolo del sistema (busca "cmd" en Windows)</li>
+                    <li>Escribe: <span class="file-box">python --version</span></li>
+                    <li>Si ves un número de versión, ¡ya lo tienes!</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>¿No lo tienes?</strong> Descárgalo desde: 
+                    <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>
+                </p>
+                <div class="warning" style="margin-top: 10px;">
+                    <strong>⚠️ IMPORTANTE:</strong> Durante la instalación de Python, asegúrate de marcar la casilla que dice 
+                    <strong>"Add Python to PATH"</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">2</span>
+                Coloca tus videos en la carpeta
+            </div>
+            <div class="step-content">
+                <p>Copia o mueve los videos que quieres procesar a la misma carpeta donde está esta aplicación.</p>
+                <p><strong>Formatos soportados:</strong></p>
+                <ul>
+                    <li>.mp4</li>
+                    <li>.mov</li>
+                    <li>.avi</li>
+                    <li>.mkv</li>
+                    <li>.flv</li>
+                    <li>.wmv</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">3</span>
+                Inicia la aplicación
+            </div>
+            <div class="step-content">
+                <p>Hay dos formas de iniciar la aplicación:</p>
+                
+                <h4 style="margin-top: 15px;">🌟 Opción A - La más fácil (RECOMENDADA):</h4>
+                <p>Haz doble click en el archivo:</p>
+                <p class="file-box">⭐ HACER DOBLE CLICK AQUI.bat</p>
+                
+                <h4 style="margin-top: 15px;">🔧 Opción B - Directa:</h4>
+                <p>Haz doble click en el archivo:</p>
+                <p class="file-box">INICIAR_APP.bat</p>
+
+                <div class="success" style="margin-top: 15px;">
+                    <strong>✅ ¿Qué pasará?</strong>
+                    <ul>
+                        <li>Se abrirá una ventana negra (terminal) - ¡NO la cierres!</li>
+                        <li>Se instalarán las dependencias automáticamente (solo la primera vez)</li>
+                        <li>Se abrirá tu navegador web automáticamente</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">4</span>
+                Usa la interfaz web
+            </div>
+            <div class="step-content">
+                <p>En tu navegador verás una interfaz simple:</p>
+                <ol>
+                    <li>Verás una lista de todos los videos en la carpeta</li>
+                    <li>Haz click en el video que quieras procesar (se pondrá morado)</li>
+                    <li>Haz click en el botón <strong>"Extraer Frames"</strong></li>
+                    <li>Espera a que termine (puede tardar dependiendo del video)</li>
+                    <li>¡Listo! Verás un mensaje de éxito</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">5</span>
+                Encuentra tus frames extraídos
+            </div>
+            <div class="step-content">
+                <p>Los frames se guardarán en una nueva carpeta llamada:</p>
+                <p class="file-box">nombre_de_tu_video_frames/</p>
+                <p style="margin-top: 10px;">Por ejemplo, si tu video se llama <strong>"vacaciones.mp4"</strong>, 
+                encontrarás los frames en la carpeta <strong>"vacaciones_frames"</strong></p>
+                <p>Dentro encontrarás archivos como:</p>
+                <ul>
+                    <li>frame_0000.png</li>
+                    <li>frame_0001.png</li>
+                    <li>frame_0002.png</li>
+                    <li>... y así sucesivamente</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ Cosas importantes a recordar:</h3>
+            <ul>
+                <li><strong>NO cierres la ventana negra</strong> mientras uses la aplicación</li>
+                <li>Si cierras el navegador por error, abre: <span class="file-box">http://localhost:5000</span></li>
+                <li>Para cerrar la aplicación, presiona Ctrl+C en la ventana negra o ciérrala</li>
+                <li>La extracción puede tomar tiempo dependiendo del tamaño del video</li>
+                <li>Los frames ocupan espacio - asegúrate de tener suficiente espacio en disco</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <div class="step-title">
+                ❓ Solución de problemas comunes
+            </div>
+            <div class="step-content">
+                <h4>"Python no está instalado"</h4>
+                <p>→ Instala Python desde <a href="https://www.python.org/downloads/" target="_blank">python.org</a> 
+                y recuerda marcar "Add Python to PATH"</p>
+
+                <h4 style="margin-top: 15px;">"No veo videos en la lista"</h4>
+                <p>→ Verifica que los videos estén en la misma carpeta que la aplicación</p>
+                <p>→ Haz click en "🔄 Actualizar lista de videos"</p>
+
+                <h4 style="margin-top: 15px;">"La página no carga"</h4>
+                <p>→ Asegúrate de que la ventana negra (terminal) siga abierta</p>
+                <p>→ Intenta abrir manualmente: http://localhost:5000</p>
+
+                <h4 style="margin-top: 15px;">"Error al extraer frames"</h4>
+                <p>→ Verifica que el archivo de video no esté corrupto</p>
+                <p>→ Intenta con otro video para descartar problemas del archivo</p>
+            </div>
+        </div>
+
+        <div class="center" style="margin-top: 40px;">
+            <p style="font-size: 24px;">🎉 ¡Disfruta extrayendo frames de tus videos! 🎉</p>
+            <p style="margin-top: 20px; color: #666;">
+                Si tienes más dudas, consulta los archivos <strong>LEEME.txt</strong> o <strong>INSTRUCCIONES_FACILES.txt</strong>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

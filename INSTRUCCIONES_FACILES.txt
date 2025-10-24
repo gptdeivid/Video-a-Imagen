@@ -1,0 +1,93 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║          EXTRACTOR DE FRAMES DE VIDEO - INSTRUCCIONES        ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+🎯 PARA USUARIOS NO TÉCNICOS - ¡MUY FÁCIL!
+═══════════════════════════════════════════════════════════════
+
+📋 REQUISITO PREVIO:
+─────────────────────────────────────────────────────────────
+   ✓ Tener Python instalado en tu computadora
+   
+   ¿No tienes Python? Descárgalo aquí:
+   👉 https://www.python.org/downloads/
+   
+   ⚠️ IMPORTANTE: Durante la instalación, marca la casilla:
+      ☑ "Add Python to PATH"
+
+
+🚀 CÓMO USAR LA APLICACIÓN (3 PASOS):
+═══════════════════════════════════════════════════════════════
+
+   1️⃣  HAZ DOBLE CLICK en el archivo:
+       📄 INICIAR_APP.bat
+       
+       (Este archivo instalará todo lo necesario automáticamente
+       la primera vez que lo ejecutes)
+
+   2️⃣  ESPERA a que se abra tu navegador
+       (Se abrirá automáticamente en unos segundos)
+
+   3️⃣  USA LA INTERFAZ WEB:
+       • Verás una lista de videos en la carpeta
+       • Haz click en el video que quieras procesar
+       • Haz click en "Extraer Frames"
+       • ¡Listo! Los frames se guardarán automáticamente
+
+
+📁 DÓNDE PONER TUS VIDEOS:
+═══════════════════════════════════════════════════════════════
+   
+   Coloca tus archivos de video (.mp4, .mov, .avi, etc.) en la
+   MISMA CARPETA donde están estos archivos.
+
+
+📂 DÓNDE ENCONTRAR LOS FRAMES EXTRAÍDOS:
+═══════════════════════════════════════════════════════════════
+   
+   Los frames se guardarán en una nueva carpeta llamada:
+   
+   nombre_de_tu_video_frames/
+   
+   Por ejemplo, si tu video se llama "mi_video.mp4", 
+   los frames estarán en: mi_video_frames/
+
+
+⚠️ IMPORTANTE:
+═══════════════════════════════════════════════════════════════
+   
+   • NO cierres la ventana negra (terminal) mientras uses la app
+   • Si cierras el navegador por error, vuelve a:
+     http://localhost:5000
+   • Para cerrar la aplicación, presiona Ctrl+C en la ventana
+     negra o simplemente cierra la ventana
+
+
+❓ SOLUCIÓN DE PROBLEMAS:
+═══════════════════════════════════════════════════════════════
+
+   🔴 "Python no está instalado"
+      → Instala Python desde: https://www.python.org/downloads/
+      → Recuerda marcar "Add Python to PATH"
+
+   🔴 "No veo videos en la lista"
+      → Asegúrate de que los videos estén en esta carpeta
+      → Haz click en el botón "🔄 Actualizar lista"
+
+   🔴 "La página no carga"
+      → Verifica que la ventana negra siga abierta
+      → Intenta abrir: http://localhost:5000
+
+
+📧 SOPORTE:
+═══════════════════════════════════════════════════════════════
+   
+   Si tienes problemas, revisa el archivo README_WEB.md
+   para más información técnica.
+
+
+═══════════════════════════════════════════════════════════════
+           ¡Disfruta extrayendo frames de tus videos! 🎬
+═══════════════════════════════════════════════════════════════
